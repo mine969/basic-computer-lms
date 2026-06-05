@@ -11,6 +11,8 @@ type CourseState = {
   error: string | null;
 };
 
+const dataVersion = "2026-06-05-burmese-full-v1";
+
 export function useCourseData(language: Preferences["language"]) {
   const [state, setState] = useState<CourseState>({
     baseCourse: null,
@@ -24,8 +26,8 @@ export function useCourseData(language: Preferences["language"]) {
     async function load() {
       try {
         const [courseResponse, overridesResponse] = await Promise.all([
-          fetch("/data/course.json"),
-          fetch("/data/burmese-overrides.json")
+          fetch(`/data/course.json?v=${dataVersion}`),
+          fetch(`/data/burmese-overrides.json?v=${dataVersion}`)
         ]);
         if (!courseResponse.ok) {
           throw new Error(`Could not load course.json (${courseResponse.status})`);

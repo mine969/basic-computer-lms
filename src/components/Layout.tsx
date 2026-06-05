@@ -40,7 +40,35 @@ export function Layout({
           </nav>
         </div>
         {!preferences.focusMode ? (
-          <div className="mx-auto flex max-w-7xl flex-wrap gap-2 px-4 pb-4">
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-3 px-4 pb-4">
+            <div
+              aria-label={s.language}
+              className="inline-flex min-h-12 overflow-hidden rounded-lg border-2 border-ocean bg-white text-lg font-black dark:bg-slate-800"
+              role="group"
+            >
+              <button
+                aria-pressed={preferences.language === "en"}
+                className={`px-4 py-2 transition ${
+                  preferences.language === "en"
+                    ? "bg-ocean text-white"
+                    : "text-ink hover:bg-teal-50 dark:text-white dark:hover:bg-slate-700"
+                }`}
+                onClick={() => progressApi.updatePreferences({ language: "en" })}
+              >
+                English
+              </button>
+              <button
+                aria-pressed={preferences.language === "my"}
+                className={`border-l-2 border-ocean px-4 py-2 transition ${
+                  preferences.language === "my"
+                    ? "bg-ocean text-white"
+                    : "text-ink hover:bg-teal-50 dark:text-white dark:hover:bg-slate-700"
+                }`}
+                onClick={() => progressApi.updatePreferences({ language: "my" })}
+              >
+                မြန်မာ
+              </button>
+            </div>
             <button
               className="control-button"
               onClick={() =>

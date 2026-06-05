@@ -10,7 +10,8 @@
     "serve": "vite preview --host 127.0.0.1 --port 4173",
     "parse-course": "tsx scripts/parse-course.ts",
     "generate-visuals": "python scripts/generate-lesson-visuals.py",
-    "translate:my": "tsx scripts/translate-course.ts"
+    "translate:my": "tsx scripts/translate-course.ts",
+    "translate:my:web": "tsx scripts/translate-course-web.ts"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^4.3.4",

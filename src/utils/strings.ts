@@ -47,7 +47,7 @@ export const strings = {
   },
   my: {
     appName: "Senior Computer LMS",
-    appSubtitle: "Offline Computer နဲ့ AI သင်ခန်းစာများ",
+    appSubtitle: "Offline Computer နှင့် AI သင်ခန်းစာများ",
     modules: "Modules",
     search: "ရှာရန်",
     bookmarks: "Bookmarks",
@@ -72,7 +72,7 @@ export const strings = {
     markComplete: "ပြီးပြီဟု မှတ်မယ်",
     lessonComplete: "Lesson ပြီးပါပြီ",
     bookmarkLesson: "Bookmark လုပ်မယ်",
-    removeBookmark: "Bookmark ဖယ်မယ်",
+    removeBookmark: "Bookmark ဖြုတ်မယ်",
     previousLesson: "အရင် Lesson",
     nextLesson: "နောက် Lesson",
     practiceFlashcards: "Flashcards လေ့ကျင့်မယ်",
