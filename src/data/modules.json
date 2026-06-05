@@ -1,0 +1,202 @@
+[
+  {
+    "id": "M01",
+    "number": 1,
+    "title": "Computer Fundamentals",
+    "description": "Computer Fundamentals lessons for calm, practical computer learning.",
+    "lessonCount": 10,
+    "firstLessonId": "M01-L01"
+  },
+  {
+    "id": "M02",
+    "number": 2,
+    "title": "Windows 11 Basics",
+    "description": "Windows 11 Basics lessons for calm, practical computer learning.",
+    "lessonCount": 8,
+    "firstLessonId": "M02-L01"
+  },
+  {
+    "id": "M03",
+    "number": 3,
+    "title": "Mouse & Keyboard Skills",
+    "description": "Mouse & Keyboard Skills lessons for calm, practical computer learning.",
+    "lessonCount": 8,
+    "firstLessonId": "M03-L01"
+  },
+  {
+    "id": "M04",
+    "number": 4,
+    "title": "Files & Folders",
+    "description": "Files & Folders lessons for calm, practical computer learning.",
+    "lessonCount": 8,
+    "firstLessonId": "M04-L01"
+  },
+  {
+    "id": "M05",
+    "number": 5,
+    "title": "Internet Fundamentals",
+    "description": "Internet Fundamentals lessons for calm, practical computer learning.",
+    "lessonCount": 8,
+    "firstLessonId": "M05-L01"
+  },
+  {
+    "id": "M06",
+    "number": 6,
+    "title": "Web Browsers",
+    "description": "Web Browsers lessons for calm, practical computer learning.",
+    "lessonCount": 8,
+    "firstLessonId": "M06-L01"
+  },
+  {
+    "id": "M07",
+    "number": 7,
+    "title": "Email",
+    "description": "Email lessons for calm, practical computer learning.",
+    "lessonCount": 7,
+    "firstLessonId": "M07-L01"
+  },
+  {
+    "id": "M08",
+    "number": 8,
+    "title": "Microsoft Word",
+    "description": "Microsoft Word lessons for calm, practical computer learning.",
+    "lessonCount": 7,
+    "firstLessonId": "M08-L01"
+  },
+  {
+    "id": "M09",
+    "number": 9,
+    "title": "Microsoft Excel",
+    "description": "Microsoft Excel lessons for calm, practical computer learning.",
+    "lessonCount": 7,
+    "firstLessonId": "M09-L01"
+  },
+  {
+    "id": "M10",
+    "number": 10,
+    "title": "Microsoft PowerPoint",
+    "description": "Microsoft PowerPoint lessons for calm, practical computer learning.",
+    "lessonCount": 7,
+    "firstLessonId": "M10-L01"
+  },
+  {
+    "id": "M11",
+    "number": 11,
+    "title": "Cloud Storage",
+    "description": "Cloud Storage lessons for calm, practical computer learning.",
+    "lessonCount": 7,
+    "firstLessonId": "M11-L01"
+  },
+  {
+    "id": "M12",
+    "number": 12,
+    "title": "Printing & Scanning",
+    "description": "Printing & Scanning lessons for calm, practical computer learning.",
+    "lessonCount": 7,
+    "firstLessonId": "M12-L01"
+  },
+  {
+    "id": "M13",
+    "number": 13,
+    "title": "Android Smartphones",
+    "description": "Android Smartphones lessons for calm, practical computer learning.",
+    "lessonCount": 10,
+    "firstLessonId": "M13-L01"
+  },
+  {
+    "id": "M14",
+    "number": 14,
+    "title": "iPhone Basics",
+    "description": "iPhone Basics lessons for calm, practical computer learning.",
+    "lessonCount": 10,
+    "firstLessonId": "M14-L01"
+  },
+  {
+    "id": "M15",
+    "number": 15,
+    "title": "Digital Payments",
+    "description": "Digital Payments lessons for calm, practical computer learning.",
+    "lessonCount": 10,
+    "firstLessonId": "M15-L01"
+  },
+  {
+    "id": "M16",
+    "number": 16,
+    "title": "Online Shopping",
+    "description": "Online Shopping lessons for calm, practical computer learning.",
+    "lessonCount": 10,
+    "firstLessonId": "M16-L01"
+  },
+  {
+    "id": "M17",
+    "number": 17,
+    "title": "Cybersecurity",
+    "description": "Cybersecurity lessons for calm, practical computer learning.",
+    "lessonCount": 14,
+    "firstLessonId": "M17-L01"
+  },
+  {
+    "id": "M18",
+    "number": 18,
+    "title": "Online Banking",
+    "description": "Online Banking lessons for calm, practical computer learning.",
+    "lessonCount": 10,
+    "firstLessonId": "M18-L01"
+  },
+  {
+    "id": "M19",
+    "number": 19,
+    "title": "Artificial Intelligence",
+    "description": "Artificial Intelligence lessons for calm, practical computer learning.",
+    "lessonCount": 5,
+    "firstLessonId": "M19-L01"
+  },
+  {
+    "id": "M20",
+    "number": 20,
+    "title": "ChatGPT",
+    "description": "ChatGPT lessons for calm, practical computer learning.",
+    "lessonCount": 5,
+    "firstLessonId": "M20-L01"
+  },
+  {
+    "id": "M21",
+    "number": 21,
+    "title": "Gemini",
+    "description": "Gemini lessons for calm, practical computer learning.",
+    "lessonCount": 5,
+    "firstLessonId": "M21-L01"
+  },
+  {
+    "id": "M22",
+    "number": 22,
+    "title": "Microsoft Copilot",
+    "description": "Microsoft Copilot lessons for calm, practical computer learning.",
+    "lessonCount": 5,
+    "firstLessonId": "M22-L01"
+  },
+  {
+    "id": "M23",
+    "number": 23,
+    "title": "Deepfakes & Misinformation",
+    "description": "Deepfakes & Misinformation lessons for calm, practical computer learning.",
+    "lessonCount": 5,
+    "firstLessonId": "M23-L01"
+  },
+  {
+    "id": "M24",
+    "number": 24,
+    "title": "Future Technology",
+    "description": "Future Technology lessons for calm, practical computer learning.",
+    "lessonCount": 5,
+    "firstLessonId": "M24-L01"
+  },
+  {
+    "id": "M25",
+    "number": 25,
+    "title": "Digital Life Mastery",
+    "description": "Digital Life Mastery lessons for calm, practical computer learning.",
+    "lessonCount": 5,
+    "firstLessonId": "M25-L01"
+  }
+]
