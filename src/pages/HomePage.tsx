@@ -49,8 +49,8 @@ export function HomePage({
       <aside className="overflow-hidden rounded-lg border-2 border-slate-200 bg-white shadow-soft dark:border-slate-700 dark:bg-slate-800">
         <img
           className="h-72 w-full object-cover"
-          src="/images/senior-learning-computer.png"
-          alt="Older adult learning with a laptop at a home desk"
+          src="/images/course/laptop-home-workspace.jpg"
+          alt="Real-world photo of a laptop on a calm home desk"
         />
         <div className="space-y-5 p-6">
           <h2 className="text-3xl font-black">{s.progress}</h2>

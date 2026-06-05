@@ -6,7 +6,7 @@ const CORE_ASSETS = [
   "/data/course.json",
   "/data/burmese-overrides.json",
   "/downloads/Senior-Computer-AI-Literacy-Course-220K-REAL-WORLD-VISUAL.md",
-  "/images/senior-learning-computer.png"
+  "/images/course/laptop-home-workspace.jpg"
 ];
 
 self.addEventListener("install", (event) => {

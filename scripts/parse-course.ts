@@ -168,10 +168,16 @@ function chooseLessonImage(moduleId: string, title: string) {
   return moduleImageMap[moduleId] ?? moduleImageMap.M01;
 }
 
-function ensureLessonImage(content: string, moduleId: string, title: string) {
-  if (/!\[[^\]]*]\([^)]+\)/.test(content)) return content;
+function ensureLessonImage(content: string, moduleId: string, title: string, lessonId: string) {
   const image = chooseLessonImage(moduleId, title);
-  const figure = `![${image.caption}](/images/course/${image.file})\n\n*Figure: ${image.caption}*\n\n`;
+  const figure = `![${image.caption}](/images/lessons/${lessonId}.jpg)\n\n*Figure: ${image.caption}*\n\n`;
+  const leadingImageBlock =
+    /^(\# .+\n\n)(?:!\[[^\]]*]\([^)]+\)\n\n(?:\*Figure:[^\n]*\*\n\n)?)/;
+
+  if (leadingImageBlock.test(content)) {
+    return content.replace(leadingImageBlock, `$1${figure}`);
+  }
+
   return content.replace(/^# .+\n/, (heading) => `${heading}\n${figure}`);
 }
 
@@ -191,7 +197,8 @@ function finishLesson() {
   const content = ensureLessonImage(
     cleanTextBlocks(currentLessonLines.join("\n").trim()),
     currentLessonMeta.moduleId,
-    currentLessonMeta.title
+    currentLessonMeta.title,
+    currentLessonMeta.id
   );
   currentModule.lessons.push({
     ...currentLessonMeta,

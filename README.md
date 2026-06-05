@@ -9,7 +9,7 @@ An offline-first static LMS for a senior learner. The app uses the final course 
 - PWA service worker for offline caching
 - Full final-edition course parsed into LMS JSON
 - 25 modules and 191 lessons
-- Real-world course images and screenshot-style visuals
+- Real-world course images and screenshot-style visuals only; no AI-generated lesson photos
 - 1,210 parsed flashcards
 - Offline search index
 - Bookmarks
