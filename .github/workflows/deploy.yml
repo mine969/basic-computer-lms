@@ -1,4 +1,4 @@
-name: Deploy Basic Computer LMS
+name: Deploy Basic Computer LMS to GitHub Pages
 
 on:
   push:
