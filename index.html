@@ -1,180 +1,302 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="terminal">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Basic Computer LMS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#071417">
+    <title>Basic Computer LMS Offline</title>
     <style>
+      html { font-size: 20px; color-scheme: dark; }
       :root {
-        --bg: #eef7f8;
-        --panel: #ffffff;
-        --ink: #102a2d;
-        --muted: #4c6569;
-        --accent: #166f7a;
-        --accent-2: #f59e0b;
-        --line: rgba(16, 42, 45, 0.14);
+        --bg: #071417;
+        --bg2: #0d252a;
+        --panel: rgba(13, 37, 42, .86);
+        --panel2: rgba(255, 255, 255, .07);
+        --ink: #effdfd;
+        --muted: #a8c9cc;
+        --line: rgba(168, 201, 204, .22);
+        --accent: #12d6c5;
+        --accent2: #f5a524;
+        --accent3: #66e38c;
+        --danger: #ff6b6b;
+        --shadow: 0 24px 80px rgba(0, 0, 0, .34);
+        --radius: 26px;
       }
-
+      [data-theme="paper"] { color-scheme: light; --bg:#f3efe5; --bg2:#fff8e8; --panel:rgba(255,255,255,.9); --panel2:rgba(22,47,52,.06); --ink:#162f34; --muted:#5d7275; --line:rgba(22,47,52,.18); --accent:#166f7a; --accent2:#b45309; --accent3:#2f855a; --shadow:0 18px 50px rgba(22,47,52,.12); }
+      [data-theme="lab"] { --bg:#07111f; --bg2:#0b1d36; --panel:rgba(12,30,54,.88); --panel2:rgba(97,203,255,.08); --ink:#ecf7ff; --muted:#a9c7dc; --line:rgba(169,199,220,.23); --accent:#61cbff; --accent2:#9d7cff; --accent3:#6ee7b7; }
+      [data-theme="keyboard"] { --bg:#120c18; --bg2:#25172f; --panel:rgba(37,23,47,.9); --panel2:rgba(255,255,255,.08); --ink:#fff7ff; --muted:#d8bfdc; --line:rgba(216,191,220,.22); --accent:#ff7ab6; --accent2:#ffd166; --accent3:#7dd3fc; }
       * { box-sizing: border-box; }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        color: var(--ink);
-        background:
-          radial-gradient(circle at 85% 10%, rgba(245, 158, 11, 0.22), transparent 28rem),
-          linear-gradient(135deg, #f8fafc, var(--bg));
-      }
-
-      main {
-        width: min(1040px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 54px 0;
-      }
-
-      .shell {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) 320px;
-        gap: 24px;
-        align-items: stretch;
-      }
-
-      .card {
-        border: 1px solid var(--line);
-        border-radius: 30px;
-        background: rgba(255, 255, 255, 0.84);
-        box-shadow: 0 24px 70px rgba(16, 42, 45, 0.12);
-      }
-
-      .hero { padding: clamp(28px, 6vw, 58px); }
-
-      .label {
-        margin: 0 0 16px;
-        color: var(--accent);
-        font-size: 12px;
-        font-weight: 900;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-      }
-
-      h1 {
-        margin: 0;
-        max-width: 720px;
-        font-size: clamp(42px, 8vw, 82px);
-        line-height: 0.95;
-        letter-spacing: -0.06em;
-      }
-
-      .summary {
-        margin: 22px 0 0;
-        max-width: 620px;
-        color: var(--muted);
-        font-size: clamp(17px, 2.2vw, 21px);
-        line-height: 1.65;
-      }
-
-      .actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 30px;
-      }
-
-      a {
-        color: inherit;
-      }
-
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 48px;
-        padding: 0 18px;
-        border-radius: 999px;
-        text-decoration: none;
-        font-weight: 800;
-      }
-
-      .primary { color: #fff; background: var(--accent); }
-      .secondary { border: 1px solid var(--line); background: #fff; }
-
-      .side {
-        padding: 26px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 24px;
-      }
-
-      .icon {
-        width: 76px;
-        height: 76px;
-        border-radius: 24px;
-        display: grid;
-        place-items: center;
-        color: #fff;
-        background: linear-gradient(135deg, var(--accent), #0891b2);
-        font-size: 28px;
-        font-weight: 900;
-      }
-
-      ul {
-        display: grid;
-        gap: 12px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      li {
-        padding: 15px;
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        background: rgba(255, 255, 255, 0.72);
-      }
-
-      li strong { display: block; font-size: 15px; }
-      li span { display: block; margin-top: 4px; color: var(--muted); font-size: 14px; line-height: 1.45; }
-
-      footer {
-        margin-top: 28px;
-        text-align: center;
-        color: var(--muted);
-        font-size: 14px;
-      }
-
-      @media (max-width: 760px) {
-        main { padding: 28px 0; }
-        .shell { grid-template-columns: 1fr; }
-        .hero, .side { padding: 24px; }
-      }
+      body { margin: 0; min-height: 100vh; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--ink); background: radial-gradient(circle at 86% 8%, color-mix(in srgb, var(--accent2) 28%, transparent), transparent 28rem), radial-gradient(circle at 12% 18%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 26rem), linear-gradient(135deg, var(--bg), var(--bg2)); }
+      a { color: inherit; }
+      button, input, textarea, select { font: inherit; }
+      button, .btn, input, textarea, select { border-radius: 999px; }
+      button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 3px solid var(--accent2); outline-offset: 3px; }
+      .skip { position: fixed; left: 18px; top: -80px; z-index: 50; padding: 12px 16px; background: var(--accent); color: #061113; font-weight: 900; text-decoration: none; }
+      .skip:focus { top: 18px; }
+      .app-shell { width: min(1240px, calc(100% - 42px)); margin: 0 auto; }
+      .topbar { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px); background: color-mix(in srgb, var(--bg) 82%, transparent); border-bottom: 1px solid var(--line); }
+      .topbar-inner { width: min(1240px, calc(100% - 42px)); margin: 0 auto; min-height: 76px; display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center; }
+      .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 950; letter-spacing: -.03em; }
+      .brand-icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 15px; background: linear-gradient(135deg, var(--accent), var(--accent2)); box-shadow: var(--shadow); }
+      .nav { display: flex; gap: 8px; justify-content: center; }
+      .nav button, .small-btn { border: 1px solid var(--line); background: var(--panel2); color: var(--ink); padding: 10px 14px; cursor: pointer; }
+      .nav button.active { background: var(--accent); color: #061113; font-weight: 900; }
+      .tools { display: flex; align-items: center; gap: 8px; }
+      #global-search { width: 220px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); padding: 11px 14px; }
+      .page { display: none; padding: 38px 0 54px; }
+      .page.active { display: block; }
+      .hero { display: grid; grid-template-columns: minmax(0, 1.2fr) 380px; gap: 24px; align-items: stretch; }
+      .card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); box-shadow: var(--shadow); }
+      .hero-main { padding: clamp(28px, 5vw, 58px); position: relative; overflow: hidden; }
+      .hero-main:after { content: ""; position: absolute; width: 260px; height: 260px; right: -80px; bottom: -90px; background: repeating-linear-gradient(90deg, color-mix(in srgb, var(--accent) 32%, transparent) 0 8px, transparent 8px 18px); opacity: .24; transform: rotate(-18deg); }
+      .eyebrow { margin: 0 0 14px; color: var(--accent); font-size: .66rem; font-weight: 950; letter-spacing: .18em; text-transform: uppercase; }
+      h1 { margin: 0; font-size: clamp(2.4rem, 7vw, 4.7rem); line-height: .92; letter-spacing: -.07em; }
+      .lead { max-width: 680px; margin: 22px 0 0; color: var(--muted); font-size: 1.08rem; line-height: 1.7; }
+      .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+      .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 18px; border: 1px solid var(--line); text-decoration: none; font-weight: 900; cursor: pointer; }
+      .btn.primary { border-color: transparent; background: var(--accent); color: #061113; }
+      .btn.secondary { background: var(--panel2); color: var(--ink); }
+      .side-panel { padding: 24px; display: grid; gap: 18px; }
+      .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 28px; }
+      .stat { padding: 16px; border-radius: 18px; background: var(--panel2); border: 1px solid var(--line); }
+      .stat strong { display: block; font-size: 1.5rem; }
+      .stat span { color: var(--muted); font-size: .78rem; }
+      .section-head { display: flex; justify-content: space-between; gap: 18px; align-items: end; margin: 34px 0 16px; }
+      .section-head h2 { margin: 0; font-size: 1.6rem; letter-spacing: -.04em; }
+      .muted { color: var(--muted); }
+      .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+      .course-card, .path-card, .quiz-card { padding: 20px; cursor: pointer; transition: transform .18s ease, border-color .18s ease; }
+      .course-card:hover, .path-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+      .course-card h3, .path-card h3 { margin: 12px 0 8px; letter-spacing: -.03em; }
+      .chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; background: color-mix(in srgb, var(--accent) 16%, transparent); color: var(--accent); font-size: .72rem; font-weight: 900; }
+      .progress-rail { height: 8px; border-radius: 999px; overflow: hidden; background: var(--panel2); margin-top: 14px; }
+      .progress-bar { height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+      .reader-layout { display: grid; grid-template-columns: 280px minmax(0, 1fr) 300px; gap: 18px; align-items: start; }
+      .reader-panel { position: sticky; top: 96px; padding: 18px; max-height: calc(100vh - 118px); overflow: auto; }
+      .reader-panel h3 { margin: 0 0 12px; }
+      .toc-list, .chapter-list, .search-results { display: grid; gap: 8px; }
+      .toc-list button, .chapter-list button, .search-results button { text-align: left; border: 1px solid var(--line); background: var(--panel2); color: var(--ink); border-radius: 16px; padding: 10px; cursor: pointer; }
+      .reader-main { padding: 28px; }
+      .reader-toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+      .reader-content { font-size: 20px; line-height: 1.85; }
+      .reader-content h1, .reader-content h2, .reader-content h3 { line-height: 1.15; letter-spacing: -.04em; }
+      .reader-content img { max-width: 100%; height: auto; }
+      .reader-content code { background: var(--panel2); padding: 2px 6px; border-radius: 8px; }
+      .code-wrap { position: relative; margin: 20px 0; }
+      .copy-code { position: absolute; right: 10px; top: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); padding: 7px 10px; cursor: pointer; }
+      pre { overflow: auto; margin: 0; padding: 18px; border-radius: 18px; background: #071113; color: #e8f9f7; border: 1px solid rgba(255,255,255,.12); }
+      .code-with-nums { display: grid; grid-template-columns: auto minmax(0, 1fr); border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,.12); background: #071113; }
+      .code-with-nums pre { border: 0; border-radius: 0; }
+      .code-gutter { user-select: none; color: #7fa2a5; text-align: right; border-right: 1px solid rgba(255,255,255,.12) !important; }
+      .code-main { padding-left: 14px; }
+      textarea { width: 100%; min-height: 120px; resize: vertical; border: 1px solid var(--line); background: var(--panel2); color: var(--ink); padding: 14px; border-radius: 18px; }
+      .quiz-options { display: grid; gap: 10px; margin-top: 18px; }
+      .quiz-options button { text-align: left; border: 1px solid var(--line); background: var(--panel2); color: var(--ink); padding: 14px; cursor: pointer; }
+      .quiz-options button.correct { border-color: var(--accent3); background: color-mix(in srgb, var(--accent3) 20%, transparent); }
+      .quiz-options button.wrong { border-color: var(--danger); background: color-mix(in srgb, var(--danger) 16%, transparent); }
+      .install { display: none; position: fixed; right: 18px; bottom: 18px; z-index: 30; max-width: 380px; padding: 18px; }
+      .install.show { display: block; }
+      footer { padding: 28px 0 48px; color: var(--muted); text-align: center; }
+      @media (max-width: 980px) { .topbar-inner { grid-template-columns: 1fr; padding: 12px 0; } .nav { justify-content: flex-start; flex-wrap: wrap; } .tools { flex-wrap: wrap; } .hero, .reader-layout { grid-template-columns: 1fr; } .reader-panel { position: static; max-height: none; } .grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 767px) { html { font-size: 17px; } .app-shell, .topbar-inner { width: min(100% - 24px, 1240px); } .stat-grid, .grid { grid-template-columns: 1fr; } #global-search { width: 100%; } .reader-main { padding: 20px; } }
+      @media (max-width: 420px) { html { font-size: 15px; } .hero-main, .side-panel { padding: 20px; } }
+      @media print { .topbar, .reader-panel, .install, .skip, footer, .reader-toolbar { display: none !important; } body { background: #fff; color: #111; } .app-shell { width: 100%; } .page { display: block !important; padding: 0; } .card { box-shadow: none; border: 0; } .reader-layout { display: block; } }
     </style>
   </head>
   <body>
-    <main>
-      <section class="shell" aria-label="Basic Computer LMS overview">
-        <div class="card hero">
-          <p class="label">Basic Computer LMS</p>
-          <h1>Simple computer learning, kept clean and easy.</h1>
-          <p class="summary">
-            A lightweight static page for basic computer learning resources. The repository has been simplified for easy GitHub Pages deployment and maintenance.
-          </p>
-          <div class="actions">
-            <a class="button primary" href="https://github.com/mine969/basic-computer-lms">View Repository</a>
-            <a class="button secondary" href="README.md">Read Project Notes</a>
-          </div>
+    <a class="skip" href="#main-content">Skip to content</a>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#home" data-go="home"><span class="brand-icon">PC</span><span>Basic Computer LMS</span></a>
+        <nav class="nav" aria-label="Main navigation">
+          <button type="button" data-go="home">Home</button>
+          <button type="button" data-go="courses">Courses</button>
+          <button type="button" data-go="quiz">Quiz</button>
+          <button type="button" data-go="reader">Reader</button>
+        </nav>
+        <div class="tools">
+          <input id="global-search" type="search" placeholder="Search keyboard, browser, safety..." aria-label="Search lessons">
+          <button class="small-btn" type="button" data-font="down">A-</button>
+          <button class="small-btn" type="button" data-font="up">A+</button>
+          <select id="theme-select" aria-label="Theme">
+            <option value="terminal">Terminal Dark</option>
+            <option value="paper">Paper Notes</option>
+            <option value="lab">Learning Lab</option>
+            <option value="keyboard">Keyboard Glow</option>
+          </select>
         </div>
-        <aside class="card side">
-          <div class="icon">PC</div>
-          <ul>
-            <li><strong>Deployment</strong><span>GitHub Pages from root index.html.</span></li>
-            <li><strong>Stack</strong><span>Single static HTML file with no build step.</span></li>
-            <li><strong>Maintainer</strong><span>Hein Htet Zaw.</span></li>
-          </ul>
-        </aside>
+      </div>
+    </header>
+    <main id="main-content" class="app-shell">
+      <section id="page-home" class="page" aria-label="Home page">
+        <div class="hero">
+          <div class="card hero-main">
+            <p class="eyebrow">Offline senior-friendly computer lessons</p>
+            <h1>Simple computer learning, kept clean and easy.</h1>
+            <p class="lead">A self-contained learning desk for basic computer confidence: files, keyboard habits, internet safety, email, search, and daily practice. It works offline from one file and remembers progress on this device.</p>
+            <div class="actions">
+              <button class="btn primary" type="button" data-go="courses">Start Learning</button>
+              <button class="btn secondary" type="button" data-go="quiz">Take 3-Question Check</button>
+              <button class="btn secondary" type="button" onclick="App.openFirstUnread()">Continue Last Lesson</button>
+            </div>
+            <div class="stat-grid" aria-label="Course statistics">
+              <div class="stat"><strong id="stat-chapters">4</strong><span>chapters</span></div>
+              <div class="stat"><strong id="stat-subjects">4</strong><span>subjects</span></div>
+              <div class="stat"><strong id="stat-paths">8</strong><span>learning paths</span></div>
+            </div>
+          </div>
+          <aside class="card side-panel" aria-label="About this app">
+            <div>
+              <span class="chip">💻 Basic Computer LMS</span>
+              <h2>Built like a friendly desktop.</h2>
+              <p class="muted">Technical enough to be useful, calm enough for first-time learners.</p>
+            </div>
+            <div class="stat"><strong id="daily-tip-title">Daily Tip</strong><span id="daily-tip">Keep both hands relaxed. Accuracy comes before speed.</span></div>
+            <div class="muted">Author: Hein Htet Zaw<br>Content: AI-driven</div>
+          </aside>
+        </div>
+        <div class="section-head"><h2>Learning Paths</h2><span class="muted">8 practical routes through the same basics</span></div>
+        <div id="home-paths" class="grid"></div>
       </section>
-      <footer>Basic Computer LMS by Hein Htet Zaw</footer>
+      <section id="page-courses" class="page" aria-label="Courses page">
+        <div class="section-head"><h2>Courses</h2><span class="muted">Choose a subject card and read the matching chapter.</span></div>
+        <div id="courses-grid" class="grid"></div>
+        <div class="section-head"><h2>Recent Lessons</h2><span class="muted">Saved locally on this device.</span></div>
+        <div id="recent-list" class="chapter-list"></div>
+      </section>
+      <section id="page-quiz" class="page" aria-label="Quiz page">
+        <div class="card quiz-card">
+          <span class="chip">3 quick checks</span>
+          <h1>Computer Confidence Quiz</h1>
+          <p class="lead">Answer three practical questions from the lessons. The goal is safe, calm, repeatable computer use.</p>
+          <div id="quiz-box"></div>
+        </div>
+      </section>
+      <section id="page-reader" class="page" aria-label="Reader page">
+        <div class="reader-layout">
+          <aside class="card reader-panel" aria-label="Chapter list">
+            <h3>Chapters</h3>
+            <div id="chapter-list" class="chapter-list"></div>
+          </aside>
+          <article class="card reader-main" aria-label="Lesson reader">
+            <div class="reader-toolbar">
+              <div><span id="reader-chip" class="chip">Select a chapter</span></div>
+              <div class="actions" style="margin:0">
+                <button class="small-btn" type="button" onclick="EHU_RCtrl.adjFont(-1)">A-</button>
+                <button class="small-btn" type="button" onclick="EHU_RCtrl.adjFont(1)">A+</button>
+                <button class="small-btn" type="button" onclick="EHU_Bookmarks.toggle()">Bookmark</button>
+                <button class="small-btn" type="button" onclick="EHU_Checks.toggleDone()">Mark Done</button>
+              </div>
+            </div>
+            <div id="reader-content" class="reader-content"><p class="muted">No chapter selected. Use the course cards or chapter list to begin.</p></div>
+          </article>
+          <aside class="card reader-panel" aria-label="Reader tools">
+            <h3>Reader Tools</h3>
+            <input id="chapter-search" type="search" placeholder="Search this chapter" aria-label="Search current chapter" style="width:100%;border:1px solid var(--line);background:var(--panel2);color:var(--ink);padding:10px 12px">
+            <div id="chapter-search-results" class="search-results"></div>
+            <h3>Table of Contents</h3>
+            <div id="toc-list" class="toc-list"></div>
+            <h3>Notes</h3>
+            <textarea id="notes-box" placeholder="Write a private note for this chapter..."></textarea>
+            <p class="muted">Author: Hein Htet Zaw<br>Content: AI-driven</p>
+          </aside>
+        </div>
+      </section>
     </main>
+    <aside id="install-banner" class="card install" aria-label="Install app">
+      <strong>Install Basic Computer LMS</strong>
+      <p class="muted">Save this offline learning desk on your device.</p>
+      <button class="btn primary" type="button" onclick="App.install()">Install</button>
+      <button class="btn secondary" type="button" onclick="App.dismissInstall()">Not now</button>
+    </aside>
+    <footer>Author: Hein Htet Zaw · Content: AI-driven</footer>
+    <script type="application/json" id="ehu-embedded-markdown">
+      {
+        "basics/01-computer-confidence.md": "# Computer Confidence\n\nA computer is a tool for reading, writing, learning, saving files, and communicating. Start slowly and repeat the same steps until they feel familiar.\n\n## Main Parts\n\n- **Screen**: shows your work.\n- **Keyboard**: types letters, numbers, and shortcuts.\n- **Mouse or touchpad**: points, clicks, and scrolls.\n- **Files and folders**: keep documents organized.\n\n## Safe Starting Routine\n\n1. Sit comfortably.\n2. Turn on the computer.\n3. Wait until the desktop or login screen is ready.\n4. Open only one app at a time when practicing.\n5. Save your work before closing.\n\n## Tiny Practice\n\nOpen a notes app and type three lines about what you learned today. Save it with a clear file name such as `computer-practice-01`.\n\n```txt\nToday I opened the computer.\nI practiced typing slowly.\nI saved my first note.\n```",
+        "basics/02-keyboard-and-files.md": "# Keyboard and Files\n\nThe keyboard is your main writing tool. Accuracy matters more than speed. Files are easier to find when their names explain what they contain.\n\n## Useful Keys\n\n- **Enter** starts a new line or confirms a choice.\n- **Backspace** removes the character before the cursor.\n- **Shift** makes capital letters.\n- **Ctrl + S** saves your work.\n- **Ctrl + C** copies selected text.\n- **Ctrl + V** pastes copied text.\n\n## Naming Files\n\nGood file names are short, clear, and searchable. Use dates or subject words when helpful.\n\n```txt\nlesson-notes.txt\nfamily-photo-june.jpg\nemail-practice-2026.txt\n```\n\n## Folder Habit\n\nCreate one folder for learning. Keep notes, screenshots, and downloaded files together until you are ready to organize them further.",
+        "internet/03-browser-email-safety.md": "# Browser, Email, and Safety\n\nA browser opens websites. Email sends messages. Safety means slowing down before clicking, checking names, and protecting passwords.\n\n## Browser Basics\n\nUse the address bar for website addresses and searches. A secure site usually begins with `https://`. Bookmark pages you use often.\n\n## Email Basics\n\nRead the sender name and address carefully. Do not open unexpected attachments. If a message asks for money, password, or urgent action, pause and verify another way.\n\n## Password Rules\n\n- Use a different password for important accounts.\n- Do not share passwords in chat or email.\n- Use two-step verification when available.\n- Write recovery information in a safe private place.\n\n```txt\nCheck sender.\nRead slowly.\nDo not rush.\nAsk before clicking suspicious links.\n```",
+        "practice/04-daily-computer-practice.md": "# Daily Computer Practice\n\nSmall daily practice builds real confidence. Ten focused minutes is better than one long confusing session.\n\n## 10-Minute Routine\n\n1. Turn on the computer.\n2. Open your learning folder.\n3. Type a short note.\n4. Save it with a clear name.\n5. Open a browser and search one useful topic.\n6. Close apps calmly.\n\n## Self Check\n\nAsk yourself: Did I save my file? Can I find it again? Did I avoid clicking unknown links?\n\n## Keep Going\n\nProgress is not memorizing everything. Progress is knowing how to pause, read the screen, and repeat safe steps."
+      }
+    </script>
+    <script>
+      var App, Reader, Courses, Quiz;
+      var EHU_Search = { _lastQuery: '', query: function(v){ App.handleGlobalSearch(v); } };
+      var EHU_Progress, EHU_LastRead, EHU_Recent, EHU_Bookmarks, EHU_Notes, EHU_Checks, EHU_ChSearch, EHU_TOC, EHU_NavHistory, EHU_RCtrl, EHU_Accent, EHU_Data, EHU_DataPanel, EHU_Confirm, EHU_BNL, EHU_KS, EHU_Streak, EHU_DailyTip, EHU_HL;
+
+      EHU_Data = {
+        prefix: 'bcl-',
+        chapters: [
+          { id:'confidence', file:'basics/01-computer-confidence.md', title:'Computer Confidence', subject:'Basics', icon:'🖥️', color:'#12d6c5' },
+          { id:'keyboard', file:'basics/02-keyboard-and-files.md', title:'Keyboard and Files', subject:'Keyboard', icon:'⌨️', color:'#f5a524' },
+          { id:'safety', file:'internet/03-browser-email-safety.md', title:'Browser, Email, and Safety', subject:'Internet Safety', icon:'🛡️', color:'#66e38c' },
+          { id:'practice', file:'practice/04-daily-computer-practice.md', title:'Daily Computer Practice', subject:'Practice', icon:'📘', color:'#61cbff' }
+        ],
+        paths: [
+          'First Computer Day', 'Keyboard Comfort', 'Files I Can Find', 'Safe Internet Start', 'Email Without Panic', 'Password Safety', 'Daily 10-Minute Practice', 'Family Helper Basics'
+        ],
+        tips: [
+          'Accuracy comes before typing speed.', 'Save early with Ctrl + S.', 'Use clear file names you can search later.', 'Open one new app at a time while learning.', 'Read sender names before opening email.', 'Pause before clicking urgent messages.', 'Use https sites when possible.', 'Keep passwords private.', 'Practice for ten calm minutes daily.', 'Bookmarks help you return to useful pages.', 'Folders make files less stressful.', 'Backspace fixes one character at a time.', 'Ctrl + C copies and Ctrl + V pastes.', 'If a screen is confusing, stop and read it slowly.', 'Progress means repeating safe steps.' ],
+        quiz: [
+          { q:'What should you do before closing a document?', a:1, options:['Open many more apps','Save your work','Share your password','Delete the folder'] },
+          { q:'What is the safest response to an urgent email asking for your password?', a:2, options:['Reply quickly','Open every link','Pause and verify another way','Forward it to everyone'] },
+          { q:'Which file name is easiest to understand later?', a:0, options:['lesson-notes.txt','new file final final.txt','aaaa.txt','document'] }
+        ]
+      };
+      Object.defineProperty(EHU_Data, 'markdown', { configurable: true, get: function(){ var raw = document.getElementById('ehu-embedded-markdown').textContent; var parsed = JSON.parse(raw); Object.defineProperty(EHU_Data, 'markdown', { value: parsed }); return parsed; } });
+
+      EHU_KS = { get:function(k,d){ try { return JSON.parse(localStorage.getItem(EHU_Data.prefix + k)) ?? d; } catch(e) { return d; } }, set:function(k,v){ localStorage.setItem(EHU_Data.prefix + k, JSON.stringify(v)); } };
+      EHU_Progress = { done:function(){ return EHU_KS.get('done', {}); }, pct:function(id){ return this.done()[id] ? 100 : 0; } };
+      EHU_LastRead = { get:function(){ return EHU_KS.get('last', 'confidence'); }, set:function(id){ EHU_KS.set('last', id); } };
+      EHU_Recent = { add:function(id){ var r = EHU_KS.get('recent', []); r = r.filter(function(x){ return x !== id; }); r.unshift(id); EHU_KS.set('recent', r.slice(0,5)); Courses.renderRecent(); }, list:function(){ return EHU_KS.get('recent', []); } };
+      EHU_Bookmarks = { list:function(){ return EHU_KS.get('bookmarks', []); }, toggle:function(){ var id = Reader.currentId; if(!id) return; var b = this.list(); b = b.indexOf(id) >= 0 ? b.filter(function(x){ return x !== id; }) : b.concat(id); EHU_KS.set('bookmarks', b); App.toast('Bookmark updated.'); } };
+      EHU_Notes = { load:function(id){ document.getElementById('notes-box').value = EHU_KS.get('note-' + id, ''); }, save:function(){ if(Reader.currentId) EHU_KS.set('note-' + Reader.currentId, document.getElementById('notes-box').value); } };
+      EHU_Checks = { toggleDone:function(){ if(!Reader.currentId) return; var d = EHU_Progress.done(); d[Reader.currentId] = !d[Reader.currentId]; EHU_KS.set('done', d); Courses.render(); App.toast(d[Reader.currentId] ? 'Marked complete.' : 'Marked incomplete.'); } };
+      EHU_ChSearch = { run:function(v){ var box = document.getElementById('chapter-search-results'); box.innerHTML = ''; if(!Reader.currentId || !v.trim()) return; var md = Reader.currentMarkdown().toLowerCase(); if(md.indexOf(v.toLowerCase()) < 0){ box.innerHTML = '<p class="muted">No matches in this chapter.</p>'; return; } box.innerHTML = '<button type="button" onclick="EHU_HL.mark(\'' + v.replace(/'/g,'') + '\')">Highlight matches for "' + App.escape(v) + '"</button>'; } };
+      EHU_TOC = { build:function(){ var toc = document.getElementById('toc-list'); toc.innerHTML = ''; document.querySelectorAll('#reader-content h1,#reader-content h2,#reader-content h3').forEach(function(h,i){ h.id = 'toc-' + i; var b = document.createElement('button'); b.type = 'button'; b.textContent = h.textContent; b.onclick = function(){ h.scrollIntoView({behavior:'smooth'}); }; toc.appendChild(b); }); } };
+      EHU_NavHistory = { stack:[], push:function(id){ this.stack.push(id); } };
+      EHU_RCtrl = { sizes:[12,13,14,15,16,17,18,20,22], key:'font-index', apply:function(){ var i = EHU_KS.get(this.key, 7); document.getElementById('reader-content').style.fontSize = this.sizes[i] + 'px'; }, adjFont:function(delta){ var i = EHU_KS.get(this.key, 7); i = Math.max(0, Math.min(this.sizes.length - 1, i + delta)); EHU_KS.set(this.key, i); this.apply(); } };
+      EHU_Accent = { apply:function(theme){ document.documentElement.setAttribute('data-theme', theme); EHU_KS.set('theme', theme); } };
+      EHU_DataPanel = { refresh:function(){} };
+      EHU_Confirm = { ask:function(msg){ return window.confirm(msg); } };
+      EHU_BNL = { bind:function(){} };
+      EHU_Streak = { touch:function(){ EHU_KS.set('streak-date', new Date().toISOString().slice(0,10)); } };
+      EHU_DailyTip = { show:function(){ var i = new Date().getDate() % EHU_Data.tips.length; document.getElementById('daily-tip').textContent = EHU_Data.tips[i]; } };
+      EHU_HL = { mark:function(term){ var el = document.getElementById('reader-content'); var html = Reader.renderMarkdown(Reader.currentMarkdown()); var safe = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); el.innerHTML = html.replace(new RegExp('(' + safe + ')', 'gi'), '<mark>$1</mark>'); Reader.afterRender(); } };
+
+      Reader = {
+        currentId: '',
+        currentMarkdown:function(){ var ch = EHU_Data.chapters.find(function(c){ return c.id === Reader.currentId; }); return ch ? EHU_Data.markdown[ch.file] : ''; },
+        open:function(id){ var ch = EHU_Data.chapters.find(function(c){ return c.id === id; }); if(!ch) return; Reader.currentId = id; EHU_LastRead.set(id); EHU_Recent.add(id); EHU_NavHistory.push(id); document.getElementById('reader-chip').textContent = ch.icon + ' ' + ch.subject; document.getElementById('reader-content').innerHTML = Reader.renderMarkdown(EHU_Data.markdown[ch.file]); EHU_Notes.load(id); Reader.afterRender(); App.goTo('reader'); },
+        afterRender:function(){ Reader.addCopyButtons(); EHU_TOC.build(); EHU_RCtrl.apply(); },
+        renderMarkdown:function(md){ var lines = md.split('\n'); var html = ''; var inCode = false; var code = []; lines.forEach(function(line){ if(line.indexOf('```') === 0){ if(inCode){ html += Reader.renderCode(code.join('\n')); code = []; inCode = false; } else { inCode = true; } return; } if(inCode){ code.push(line); return; } if(line.indexOf('# ') === 0) html += '<h1>' + App.escape(line.slice(2)) + '</h1>'; else if(line.indexOf('## ') === 0) html += '<h2>' + App.escape(line.slice(3)) + '</h2>'; else if(line.indexOf('- ') === 0) html += '<p>• ' + Reader.inline(line.slice(2)) + '</p>'; else if(/^\d+\. /.test(line)) html += '<p>' + Reader.inline(line) + '</p>'; else if(line.trim()) html += '<p>' + Reader.inline(line) + '</p>'; }); return html; },
+        inline:function(s){ return App.escape(s).replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/`([^`]+)`/g, '<code>$1</code>'); },
+        renderCode:function(code){ var lines = code.split('\n'); var escaped = App.escape(code); if(lines.length > 3){ var nums = lines.map(function(_,i){ return i + 1; }).join('\n'); return '<div class="code-wrap"><button class="copy-code" type="button">Copy</button><div class="code-with-nums"><pre class="code-gutter">' + nums + '</pre><pre class="code-main"><code>' + escaped + '</code></pre></div></div>'; } return '<div class="code-wrap"><button class="copy-code" type="button">Copy</button><pre><code>' + escaped + '</code></pre></div>'; },
+        addCopyButtons:function(){ document.querySelectorAll('.copy-code').forEach(function(btn){ btn.onclick = function(){ var code = btn.parentElement.querySelector('code').textContent; navigator.clipboard.writeText(code); btn.textContent = 'Copied'; setTimeout(function(){ btn.textContent = 'Copy'; }, 1200); }; }); }
+      };
+
+      Courses = {
+        render:function(){ var grid = document.getElementById('courses-grid'); var list = document.getElementById('chapter-list'); grid.innerHTML = ''; list.innerHTML = ''; EHU_Data.chapters.forEach(function(ch){ var card = document.createElement('button'); card.type = 'button'; card.className = 'card course-card'; card.style.borderColor = ch.color; card.innerHTML = '<span class="chip">' + ch.icon + ' ' + ch.subject + '</span><h3>' + ch.title + '</h3><p class="muted">Read, practice, save notes, and mark complete.</p><div class="progress-rail"><div class="progress-bar" style="width:' + EHU_Progress.pct(ch.id) + '%"></div></div>'; card.onclick = function(){ Reader.open(ch.id); }; grid.appendChild(card); var row = document.createElement('button'); row.type = 'button'; row.textContent = ch.icon + ' ' + ch.title; row.onclick = function(){ Reader.open(ch.id); }; list.appendChild(row); }); this.renderRecent(); },
+        renderRecent:function(){ var box = document.getElementById('recent-list'); if(!box) return; box.innerHTML = ''; var r = EHU_Recent.list(); if(!r.length){ box.innerHTML = '<p class="muted">No recent lessons yet. Open a course to start your history.</p>'; return; } r.forEach(function(id){ var ch = EHU_Data.chapters.find(function(c){ return c.id === id; }); if(ch){ var b = document.createElement('button'); b.type = 'button'; b.textContent = ch.icon + ' ' + ch.title; b.onclick = function(){ Reader.open(id); }; box.appendChild(b); } }); }
+      };
+
+      Quiz = { index:0, score:0, render:function(){ var q = EHU_Data.quiz[this.index]; var box = document.getElementById('quiz-box'); if(!q){ box.innerHTML = '<h2>Score: ' + this.score + ' / ' + EHU_Data.quiz.length + '</h2><p class="muted">Review the course cards again, then retake when ready.</p><button class="btn primary" type="button" onclick="Quiz.restart()">Restart Quiz</button>'; return; } box.innerHTML = '<h2>' + App.escape(q.q) + '</h2><div class="quiz-options"></div>'; var opts = box.querySelector('.quiz-options'); q.options.forEach(function(opt,i){ var b = document.createElement('button'); b.type = 'button'; b.textContent = opt; b.onclick = function(){ if(i === q.a){ b.className = 'correct'; Quiz.score++; } else { b.className = 'wrong'; } setTimeout(function(){ Quiz.index++; Quiz.render(); }, 650); }; opts.appendChild(b); }); }, restart:function(){ this.index = 0; this.score = 0; this.render(); } };
+
+      App = {
+        deferredPrompt:null,
+        goTo:function(page){ document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); p.style.display = 'none'; }); var el = document.getElementById('page-' + page); if(el){ el.style.display = 'block'; el.classList.add('active'); } document.querySelectorAll('[data-go]').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-go') === page); }); scrollTo(0,0); dispatchEvent(new CustomEvent('ehu:pagechange', { detail:{ page:page } })); },
+        openFirstUnread:function(){ Reader.open(EHU_LastRead.get()); },
+        handleGlobalSearch:function(v){ EHU_Search._lastQuery = v; if(!v.trim()) return; var match = EHU_Data.chapters.find(function(ch){ return (ch.title + ' ' + ch.subject + ' ' + EHU_Data.markdown[ch.file]).toLowerCase().indexOf(v.toLowerCase()) >= 0; }); if(match) Reader.open(match.id); else App.toast('No matching lesson found.'); },
+        escape:function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); },
+        toast:function(msg){ var old = document.getElementById('toast-note'); if(old) old.remove(); var t = document.createElement('div'); t.id = 'toast-note'; t.className = 'card'; t.style.cssText = 'position:fixed;left:18px;bottom:18px;z-index:60;padding:14px 16px'; t.textContent = msg; document.body.appendChild(t); setTimeout(function(){ t.remove(); }, 1600); },
+        install:function(){ if(App.deferredPrompt){ App.deferredPrompt.prompt(); App.deferredPrompt = null; } App.dismissInstall(); },
+        dismissInstall:function(){ document.getElementById('install-banner').classList.remove('show'); },
+        init:function(){ document.querySelectorAll('[data-go]').forEach(function(el){ el.addEventListener('click', function(e){ e.preventDefault(); App.goTo(el.getAttribute('data-go')); }); }); document.querySelectorAll('[data-font]').forEach(function(el){ el.addEventListener('click', function(){ EHU_RCtrl.adjFont(el.getAttribute('data-font') === 'up' ? 1 : -1); }); }); document.getElementById('global-search').addEventListener('change', function(e){ EHU_Search.query(e.target.value); }); document.getElementById('chapter-search').addEventListener('input', function(e){ EHU_ChSearch.run(e.target.value); }); document.getElementById('notes-box').addEventListener('input', EHU_Notes.save); document.getElementById('theme-select').value = EHU_KS.get('theme', 'terminal'); document.getElementById('theme-select').addEventListener('change', function(e){ EHU_Accent.apply(e.target.value); }); EHU_Accent.apply(EHU_KS.get('theme', 'terminal')); EHU_DailyTip.show(); EHU_Streak.touch(); Courses.render(); Quiz.render(); App.renderPaths(); EHU_RCtrl.apply(); App.goTo('home'); App.registerSW(); },
+        renderPaths:function(){ var box = document.getElementById('home-paths'); box.innerHTML = ''; EHU_Data.paths.forEach(function(name,i){ var ch = EHU_Data.chapters[i % EHU_Data.chapters.length]; var b = document.createElement('button'); b.type = 'button'; b.className = 'card path-card'; b.innerHTML = '<span class="chip">Path ' + (i + 1) + '</span><h3>' + name + '</h3><p class="muted">Start with ' + ch.title + ' and build a safe habit.</p>'; b.onclick = function(){ Reader.open(ch.id); }; box.appendChild(b); }); },
+        registerSW:function(){ if('serviceWorker' in navigator){ var js = 'self.addEventListener("install",e=>self.skipWaiting());self.addEventListener("fetch",e=>e.respondWith(fetch(e.request).catch(()=>caches.match(e.request))))'; var blob = new Blob([js], { type:'text/javascript' }); navigator.serviceWorker.register(URL.createObjectURL(blob)); } }
+      };
+
+      window.addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); App.deferredPrompt = e; document.getElementById('install-banner').classList.add('show'); });
+      document.addEventListener('DOMContentLoaded', App.init);
+    </script>
   </body>
 </html>
