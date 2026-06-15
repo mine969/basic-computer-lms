@@ -1,122 +1,28 @@
-# Senior Computer & AI Literacy LMS
+# Basic Computer LMS
 
-An offline-first static LMS for a senior learner. The app uses the final course package and stores all progress in the browser with LocalStorage. There is no login, backend, Supabase, or database server.
+Simple static computer-learning site maintained by Hein Htet Zaw.
 
-## What Is Included
+## Files
 
-- Vite + React + TypeScript + Tailwind CSS
-- Static hash-router pages
-- PWA service worker for offline caching
-- Full final-edition course parsed into LMS JSON
-- 25 modules and 191 lessons
-- Real-world course images and screenshot-style visuals only; no AI-generated lesson photos
-- 1,210 parsed flashcards
-- Offline search index
-- Bookmarks
-- Local progress tracking
-- Font size, light/dark, high contrast, simple mode, focus mode
-- English/Burmese UI strings in `src/utils/strings.ts`
-- Downloads page for clean/visual Markdown, PDF, EPUB, and audit report
+This repository is intentionally minimal:
 
-## Source Files
+- `index.html` - deployed static page
+- `README.md` - project notes
+- `.github/workflows/deploy.yml` - GitHub Pages deployment workflow
 
-The app uses:
+## Deployment
 
-```txt
-public/course-source/Senior-Computer-AI-Literacy-Course-220K-REAL-WORLD-VISUAL.md
+The site deploys automatically to GitHub Pages when changes are pushed to `main`.
+
+Public URL:
+
+```text
+https://mine969.github.io/basic-computer-lms/
 ```
 
-Backup source:
+## Maintainer
 
-```txt
-public/course-source/Senior-Computer-AI-Literacy-Course-220K-CLEAN-NO-PHOTO.md
-```
-
-Downloads are stored in:
-
-```txt
-public/downloads/
-```
-
-Real-world visuals are stored in:
-
-```txt
-public/images/course/
-```
-
-## Run Locally
-
-```bash
-npm install
-npm run dev
-```
-
-Open the local Vite URL, usually:
-
-```txt
-http://127.0.0.1:5173
-```
-
-## Easy Launch For Mom
-
-For a simple Windows launch:
-
-1. Double-click `Create Desktop Shortcut.bat` once.
-2. Double-click the new `Computer Lessons` shortcut on the Desktop.
-3. Keep the small launcher window open while studying.
-4. Close the launcher window when finished.
-
-You can also double-click `Computer Lessons.bat` directly.
-
-That one launcher handles setup, build, and opening the browser.
-
-The launcher uses the production static build on:
-
-```txt
-http://127.0.0.1:4173
-```
-
-## Build
-
-```bash
-npm run build
-```
-
-The build output is in `dist/`.
-
-## Deploy to Vercel
-
-1. Push the repository to GitHub.
-2. Import it into Vercel.
-3. Use the default Vite settings.
-4. Build command: `npm run build`
-5. Output directory: `dist`
-
-No environment variables are required.
-
-## Offline Use
-
-The app registers `public/sw.js`. After opening the deployed site once, the app shell and visited assets are cached for later offline use. Learner progress, bookmarks, remembered flashcards, quiz/self-check scores, and preferences are saved in LocalStorage.
-
-For fully local use, run `npm run build` and serve the `dist/` folder with any static server.
-
-## Course Parser
-
-Run:
-
-```bash
-npm run parse-course
-```
-
-This reads the final visual Markdown and writes:
-
-```txt
-src/data/course.json
-src/data/modules.json
-src/data/search-index.json
-```
-
-Parsing limitations:
+Hein Htet Zaw
 
 - Module and lesson headings are parsed from `M01` and `M01-L01` style headings.
 - Quiz answer sections are extracted as self-check material. Full multiple-choice question reconstruction is best-effort and not forced.
