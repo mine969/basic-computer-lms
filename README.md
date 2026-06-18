@@ -105,6 +105,8 @@ No installation or package manager is required.
 
 ## GitHub Pages Deployment
 
+The site deploys only with GitHub Actions to GitHub Pages. It does not use Vercel, Netlify, or any external hosting build service.
+
 The site deploys automatically when changes are pushed to `main`.
 
 GitHub Pages should be configured as:
@@ -118,6 +120,8 @@ Deployment workflow:
 ```text
 .github/workflows/deploy.yml
 ```
+
+The workflow uploads the repository as a Pages artifact and publishes it with `actions/deploy-pages`.
 
 ## Repository Files
 
