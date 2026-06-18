@@ -121,11 +121,12 @@ Deployment workflow:
 
 ## Repository Files
 
+The repository is intentionally minimal -- just 3 things at the root:
+
 ```text
-index.html                  Single-file offline LMS app
-.nojekyll                   Disables Jekyll processing on GitHub Pages
-README.md                   Course and project documentation
-.github/workflows/deploy.yml GitHub Pages deployment workflow
+README.md     Course and project documentation
+index.html    Single-file offline LMS app
+.github/      Deployment workflow (.github/workflows/deploy.yml)
 ```
 
 ## Technical Notes
